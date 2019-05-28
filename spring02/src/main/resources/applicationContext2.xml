@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置静态工厂-->
+  <bean id="person" class="net.wanho.factory.StaticFactory" factory-method="getPerson">
+      <constructor-arg value="1"/>
+  </bean>
+
+    <!--配置实例工厂-->
+    <bean id="fb" class="net.wanho.factory.InstanceFactory"/>
+    <bean id="person2" factory-bean="fb" factory-method="getPerson">
+        <constructor-arg value="2"/>
+    </bean>
+
+    <!--配置Spring自带的工厂-->
+    <bean id="person3" class="net.wanho.factory.PersonFactoryBean">
+       <property name="name" value="z6"/>
+       <property name="age" value="17"/>
+    </bean>
+</beans>
